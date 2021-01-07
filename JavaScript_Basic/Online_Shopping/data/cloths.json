@@ -1,0 +1,89 @@
+{
+    "cloths": [
+      {
+        "cloth": "t-shirt",
+        "color": "pink",
+        "size": "large",
+        "gender": "female"
+      },
+      {
+        "cloth": "pants",
+        "color": "blue",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "pants",
+        "color": "yellow",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "skirt",
+        "color": "yellow",
+        "size": "large",
+        "gender": "female"
+      },
+      {
+        "cloth": "t-shirt",
+        "color": "blue",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "skirt",
+        "color": "blue",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "t-shirt",
+        "color": "yellow",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "t-shirt",
+        "color": "pink",
+        "size": "large",
+        "gender": "female"
+      },
+      {
+        "cloth": "pants",
+        "color": "blue",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "pants",
+        "color": "yellow",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "skirt",
+        "color": "yellow",
+        "size": "large",
+        "gender": "female"
+      },
+      {
+        "cloth": "t-shirt",
+        "color": "blue",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "skirt",
+        "color": "blue",
+        "size": "large",
+        "gender": "man"
+      },
+      {
+        "cloth": "t-shirt",
+        "color": "yellow",
+        "size": "large",
+        "gender": "man"
+      }
+    ]
+  }
+  

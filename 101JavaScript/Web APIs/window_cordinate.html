@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Cordinate</title>
+    <style>
+        .main_container{
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .container{
+            width: 200px;
+            height: 200px;
+            background: purple;
+            margin: 10px;
+            border-radius: 10px;
+        }
+        .container.check{
+            background: red;
+            transition: transform,300ms;
+        }
+        .container.check:hover{
+            transform: scale(1.05);
+        }
+        .buttons{
+            display: flex;
+            height: 30px;
+            align-items: center;
+            position: fixed;
+            right: 0;
+        }
+        .buttons .btn{
+            background: rgb(186, 190, 178);
+            margin-right: 10px;
+            padding: 5px;
+            border: 1px solid black;
+            cursor: pointer;
+            transition: transform 300ms ease;
+        }
+        .buttons .btn:hover{
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <div class="main_container">
+        <div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container check"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+            <div class="container"></div>
+        </div>
+        <div class="buttons">
+            <div class="button1 btn">Scroll by 100px(y)</div>
+            <div class="button2 btn">Scroll to 100px(y)</div>
+            <div class="button3 btn">Scroll into special</div>
+        </div>
+    </div>
+    <script>
+        const $check=document.querySelector('.check');
+        const $check_bound=$check.getBoundingClientRect();
+        $check.addEventListener('click',(event)=>{
+            console.log($check_bound);
+            console.log(`client: ${event.clientX}, ${event.clientY}`);
+            console.log(`page: ${event.pageX}, ${event.pageY}`);
+        });
+
+        const $btn1=document.querySelector('.button1');
+        const $btn2=document.querySelector('.button2');
+        const $btn3=document.querySelector('.button3');
+
+        $btn1.addEventListener('click',()=>{
+            window.scroll(0,window.scrollY+100);
+        });
+        $btn2.addEventListener('click',()=>{
+            window.scroll(0,100);
+        });
+        $btn3.addEventListener('click',()=>{
+            console.log($check_bound);
+            $check.scrollIntoView();
+        });
+    </script>
+</body>
+</html>

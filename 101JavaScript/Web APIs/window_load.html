@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // 오직 html문서만 로드가 완료되면 호출된다.
+        window.addEventListener('DOMContentLoaded',()=>{
+            console.log('load1');
+        });
+        //html문서와 모든 리소스 파일들이(폰트와 같은) 로드가 완료되면 호출된다.
+        window.addEventListener('load',()=>{
+            console.log('load');
+        });
+    </script>
+</body>
+</html>

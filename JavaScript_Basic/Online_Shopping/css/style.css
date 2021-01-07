@@ -1,0 +1,126 @@
+/* COMMON */
+.pink.t-shirt div{
+    background-image: url("../imgs/pink_t.png");
+    background-size: 50px;
+}
+.blue.t-shirt div{
+    background-image: url("../imgs/blue_t.png");
+    background-size: 50px;
+}
+.yellow.t-shirt div{
+    background-image: url("../imgs/yellow_t.png");
+    background-size: 50px;
+}
+.pink.pants div{
+    background-image: url("../imgs/pink_p.png");
+    background-size: 50px;
+}
+.blue.pants div{
+    background-image: url("../imgs/blue_p.png");
+    background-size: 50px;
+}
+.yellow.pants div{
+    background-image: url("../imgs/yellow_p.png");
+    background-size: 50px;
+}
+.pink.skirt div{
+    background-image: url("../imgs/pink_s.png");
+    background-size: 50px;
+}
+.blue.skirt div{
+    background-image: url("../imgs/blue_s.png");
+    background-size: 50px;
+}
+.yellow.skirt div{
+    background-image: url("../imgs/yellow_s.png");
+    background-size: 50px;
+}
+.section .content .on{
+    display: flex;
+}
+
+/* BODY */
+.body_container{
+    font-size: 16px;
+    font-weight: 400;
+    color: #333;
+    background: linear-gradient(rgb(59, 59, 68),rgb(0, 0, 0));
+}
+.section{
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 100px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+.section .logo{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 300ms ease;
+}
+.section .logo:hover{
+    transform: scale(1.1);
+}
+.section .nav{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.section .nav li{
+    transition: transform 300ms ease;
+}
+.section .nav li:hover{
+    transform: scale(1.1);
+}
+.section .nav div{
+    width: 50px;
+    height: 50px;
+    background-position: left;
+    background-repeat: no-repeat;
+    cursor: pointer;
+}
+.section .nav button{
+    height: 40px;
+    padding: 0 15px;
+    font-size: 12px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 5px;
+}
+.section .nav .b_button button{
+    background: rgb(120, 178, 255);
+}
+.section .nav .Y_button button{
+    background: rgb(245, 209, 91);
+}
+.section .nav .P_button button{
+    background: rgb(255, 120, 233);
+}
+.section .content{
+    max-height: 600px;
+    overflow: auto;
+}
+.section .content::-webkit-scrollbar{
+    display: none;
+}
+.section .content li{
+    display: none;
+    background: whitesmoke;
+    margin: 3px;
+    border-radius: 10px;
+    align-items: center;
+}
+.section .content li div{
+    width: 50px;
+    height: 50px;
+    background-position: left;
+    background-repeat: no-repeat;
+    margin-left: 15px;
+    padding: 5px;
+}
+.section .content li p{
+    font-weight: 500;
+    margin-left: 20px;
+}

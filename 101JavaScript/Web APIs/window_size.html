@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>window_size</title>
+    <style>
+        div{
+            background: rgb(202, 148, 202);
+            display: inline-block;
+            padding: 16px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">Window Size</div>   
+    <script>
+        const $container=document.querySelector(".container");
+        function resize(){
+            $container.innerHTML=`
+             <p class="screen">window.screen:${screen.width}, ${screen.height}<p>
+             <p class="outer">window.outer:${outerWidth}, ${outerHeight}<p>
+             <p class="inner">window.inner:${innerWidth}, ${innerHeight}<p>
+             <p class="document">documentElement.client:${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}<p>
+        `;
+        }
+     
+         window.addEventListener('resize', ()=>{
+             resize();
+         });
+         // screen W,H -> 모니터의 크기
+         // outer W,H -> 브라우저 창 전체의 크기
+         // inner W,H -> 브라우저 창 Contents 크기(스크롤 전체영역)
+         // documentElement clinet W,H W,H -> 브라우저 창 Contents 크기(스크롤 영역x)
+     </script>
+</body>
+</html>
