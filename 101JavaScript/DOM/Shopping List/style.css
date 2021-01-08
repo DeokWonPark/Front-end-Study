@@ -1,0 +1,104 @@
+:root{
+    --font-size:16px;
+    --Bigfont-size:22px;
+    --font-weight:500;
+}
+body{
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+    font-family: 'Roboto Mono', monospace;
+    background: rgb(179, 221, 231);
+}
+.inner{
+    width: 60vh;
+    height: 90vh;
+    position: absolute;
+    top:0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: rgb(233, 250, 255);
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.inner .header{
+    background: linear-gradient(rgb(233, 186, 255),rgb(255, 220, 250));
+    width: 100%;
+    height: 5%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--Bigfont-size);
+    font-weight: 700;
+    padding: 4px 0;
+    color: rgb(59, 151, 255);
+}
+
+.inner .contents{
+    height: 80%;
+    width: 100%;
+    overflow: auto;
+}
+.inner .contents::-webkit-scrollbar{
+    display: none;
+}
+.inner .contents li{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 30px;
+    font-weight: 600;
+    border-bottom: 1px solid lightgray;
+    transition: transform 300ms ease;
+}
+.inner .contents li i:hover{
+    transform: scale(1.1);
+    color: red;
+}
+.inner input{
+    width: 100%;
+    border: 0px;
+    box-sizing: border-box;
+    padding: 5px 5px;
+    font-weight: 600;
+    height: 5%;
+}
+.inner .footer{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(rgb(255, 220, 250),rgb(186, 250, 255));
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+.inner .footer .btn{
+    width: 50px;
+    margin: auto;
+}
+.inner .footer .btn i{
+    font-size: 50px;
+    cursor: pointer;
+}
+.inner .footer .btn i:hover{
+    color: gray;
+}
+
+@keyframes block{
+    0%{
+        transform: translate(1px,0);
+    }
+    33%{
+        transform: translate(-1px,0);
+    }
+    66%{
+        transform: translate(1px,0);
+    }
+    100%{
+        transform: translate(-1px,0);
+    }
+}
