@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        width: 250px;
+        height: 250px;
+        background-color: yellow;
+        margin-bottom: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type="checkbox" />
+    </div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+      /* 브라우저의 기본 기능을 취소 하는 예제 */
+      document.addEventListener('wheel', event => {
+        console.log('scrolling');
+        //마우스 휠 같이 빠르게 동작해야하는 기능에는 취소를 할 수 없다.
+        event.preventDefault();
+      },{passive:false});
+      const checkbox = document.querySelector('input');
+      checkbox.addEventListener('click', event => {
+        // long
+        console.log('checked');
+        //브라우저의 기본 기능을 취소
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
