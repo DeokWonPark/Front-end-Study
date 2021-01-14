@@ -13,7 +13,7 @@ const promise=new Promise((resolve,reject)=>{
     setTimeout(()=>{
         //resolve('ellie');
         reject(new Error('no network'));
-    },2000)
+    },2000);
 });
 
 // 2. Consumers: then, catch, finally
