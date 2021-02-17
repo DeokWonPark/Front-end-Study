@@ -11,7 +11,7 @@ function App({authService}) {
           <Login authService={authService}></Login>
         </Route>
         <Route path="/maker">
-          <Maker></Maker>
+          <Maker authService={authService}></Maker>
         </Route>
       </Switch>
     </BrowserRouter>
