@@ -1,10 +1,11 @@
 import firebase from 'firebase';
 const firebaseConfig = {
-  apiKey: "AIzaSyD5TXeYAR4uJgdBorgx2zni7HbZ4gNehRk",
-  authDomain: "class-card-maker.firebaseapp.com",
-  projectId: "class-card-maker",
-  databaseURL:"https://class-card-maker-default-rtdb.firebaseio.com/",
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  databaseURL:process.env.REACT_APP_FIREBASE_DATABASE_URL,
 };
-// Initialize Firebase
+
+
 const firebaseApp=firebase.initializeApp(firebaseConfig);
 export default firebaseApp;
