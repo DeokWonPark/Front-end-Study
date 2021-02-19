@@ -7,8 +7,13 @@ const Editor = ({cards,addCard,updateCard,deleteCard}) => {
     return <section className={styles.editor}>
         <h1 className={styles.title}>Card Maker</h1>
         {
-            cards.map((card)=>{
-                return <CardEditForm key={card.id} card={card} updateCard={updateCard} deleteCard={deleteCard}></CardEditForm>
+            Object.keys(cards).map((key)=>{
+                return <CardEditForm 
+                key={key} 
+                card={cards[key]} 
+                updateCard={updateCard} 
+                deleteCard={deleteCard}>
+                </CardEditForm>
             })
         }
         <CardAddForm onAdd={addCard}></CardAddForm>
