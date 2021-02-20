@@ -6,50 +6,33 @@ import Header from '../header/header';
 import Preview from '../preview/preview';
 import styles from "./maker.module.css"
 
-const Maker = ({authService,FileInput}) => {
+const Maker = ({authService,FileInput,cardRepository}) => {
+    const historyState=useHistory().state;
     const [cards,setCards]=useState({
-        "1":{
-            id:"1",
-            name:"ellie",
-            company:"sansung",
-            theme:"light",
-            title:"software Enginner",
-            email:"ejrdnjs96@gmail.com",
-            message: "go for it",
-            fileName:"ellie",
-            fileURL:null
-        },
-        "2":{
-            id:"2",
-            name:"ellie",
-            company:"sansung",
-            theme:"dark",
-            title:"software Enginner",
-            email:"ejrdnjs96@gmail.com",
-            message: "go for it",
-            fileName:"ellie",
-            fileURL:null
-        },
-        "3":{
-            id:"3",
-            name:"ellie",
-            company:"sansung",
-            theme:"colorful",
-            title:"software Enginner",
-            email:"ejrdnjs96@gmail.com",
-            message: "go for it",
-            fileName:"ellie",
-            fileURL:"ellie.png"
-        },
+        
     });
-    const history=useHistory();
+    const [userId,setUserId]=useState()
+    const history=useHistory(historyState && historyState.id);
     const onLogout=()=>{
         authService.logout();
     };
 
     useEffect(()=>{
+        if(!userId){
+            return;
+        }
+        const stopSync=cardRepository.syncCards(userId, cards =>{
+            setCards(cards);
+        })
+        // useEffect에서 return은 component가 unmount될때 호출된다.
+        return ()=>{stopSync();}
+    },[userId])
+    useEffect(()=>{
         authService.onAuthChange(user=>{
-            if(!user){
+            if(user){
+                setUserId(user.uid)
+            }
+            else{
                 history.push("/");
             }
         })
@@ -62,6 +45,7 @@ const Maker = ({authService,FileInput}) => {
             update[card.id]=card;
             return update;
         });
+        cardRepository.saveCard(userId,card)
     }
     const deleteCard=(card)=>{
         setCards(cards=>{
@@ -69,6 +53,7 @@ const Maker = ({authService,FileInput}) => {
             delete update[card.id];
             return update;
         });
+        cardRepository.removeCard(userId,card);
     }
     return <section className={styles.maker}>
         <Header onLogout={onLogout}></Header>

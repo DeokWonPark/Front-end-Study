@@ -5,6 +5,11 @@
     flex-basis: 50%;
     background: makerWhite;
     border-right: 1px solid makerLightGrey;
+    padding: 0 2rem;
+    overflow: auto;
+}
+.editor::-webkit-scrollbar {
+    display: none; 
 }
 .title{
     width: 100%;

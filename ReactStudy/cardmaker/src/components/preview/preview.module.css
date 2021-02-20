@@ -3,6 +3,14 @@
 .preview{
     flex-basis: 50%;
     background: makerWhite;
+    overflow: auto;
+}
+.preview::-webkit-scrollbar {
+    display: none; 
+}
+.preview ul{
+    display: flex;
+    justify-content: center;
 }
 .title{
     width: 100%;
