@@ -1,0 +1,21 @@
+@value makerLightGrey from '../../common/color.css';
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+.input{
+    display: none;
+}
+.button{
+    width: 100%;
+    background-color: makerLightGrey;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    outline: none;
+    font-size: 0.8rem;
+}
+.button:hover{
+    opacity: 0.8;
+}
