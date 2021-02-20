@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Editor from '../editor/editor';
 import Footer from '../footer/footer';
@@ -8,14 +8,15 @@ import styles from "./maker.module.css"
 
 const Maker = ({authService,FileInput,cardRepository}) => {
     const historyState=useHistory().state;
-    const [cards,setCards]=useState({
-        
-    });
+    const [cards,setCards]=useState({});
     const [userId,setUserId]=useState()
     const history=useHistory(historyState && historyState.id);
-    const onLogout=()=>{
+
+    /* 중요한 포인트 */
+    //authService의 변화가 생긴다면 함수를 새롭게 만들겠다.
+    const onLogout=useCallback(()=>{
         authService.logout();
-    };
+    },[authService]);
 
     useEffect(()=>{
         if(!userId){
@@ -26,7 +27,8 @@ const Maker = ({authService,FileInput,cardRepository}) => {
         })
         // useEffect에서 return은 component가 unmount될때 호출된다.
         return ()=>{stopSync();}
-    },[userId])
+    },[userId,cardRepository])
+
     useEffect(()=>{
         authService.onAuthChange(user=>{
             if(user){
@@ -36,7 +38,7 @@ const Maker = ({authService,FileInput,cardRepository}) => {
                 history.push("/");
             }
         })
-    });
+    },[authService,userId,history]);
 
 
     const createOrUpdateCard=(card)=>{
