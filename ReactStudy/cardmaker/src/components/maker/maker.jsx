@@ -9,7 +9,7 @@ import styles from "./maker.module.css"
 const Maker = ({authService,FileInput,cardRepository}) => {
     const historyState=useHistory().state;
     const [cards,setCards]=useState({});
-    const [userId,setUserId]=useState()
+    const [userId,setUserId]=useState();
     const history=useHistory(historyState && historyState.id);
 
     /* 중요한 포인트 */
