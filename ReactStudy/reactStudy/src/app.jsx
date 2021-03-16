@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import './app.css';
 import CreateUser from './components/createUser';
 import Hello from './components/hello';
@@ -7,18 +7,25 @@ import UserList from './components/userList';
 import Wrapper from './components/wrapper';
 
 function App() {
+
+  const countUser=()=>{
+    console.log("count...");
+    return users.length;
+  }
+
   const [inputs, setInputs] = useState({
     username: '',
     email: ''
   });
   const { username, email } = inputs;
-  const onChange = e => {
+
+  const onChange = useCallback(e => {
     const { name, value } = e.target;
     setInputs({
       ...inputs,
       [name]: value
     });
-  };
+  },[inputs]);
   const [users, setUsers] = useState([
     {
       id: 1,
@@ -38,9 +45,7 @@ function App() {
   ]);
 
   const nextId = useRef(4);
-  const onCreate = () => {
-    // 나중에 구현 할 배열에 항목 추가하는 로직
-    // ...
+  const onCreate = useCallback(() => {
      
     const temp={
       id:nextId.current,
@@ -48,21 +53,23 @@ function App() {
       email:email,
     }
      
-    setUsers([...users,temp]);
+    setUsers((users)=> [...users,temp] );
 
     setInputs({
       username: '',
       email: ''
     });
     nextId.current += 1;
-  };
+  },[username,email]);
 
-  const onRemove=(id)=>{
+  const onRemove=useCallback((id)=>{
     const temp=users.filter((user)=>{
       return user.id!==id;
     });
     setUsers(temp);
-  }
+  },[users])
+
+  const count=useMemo(()=>countUser(),[users]);
 
   return <>
     <Wrapper>
@@ -76,6 +83,7 @@ function App() {
     onCreate={onCreate}
     ></CreateUser>
     <UserList users={users} onRemove={onRemove} />
+    <p>count: {count}</p>
   </>;
 }
 

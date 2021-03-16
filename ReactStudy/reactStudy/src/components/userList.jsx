@@ -1,26 +1,33 @@
-import React, { useEffect } from 'react';
+import React, { memo, useContext, useEffect } from 'react';
+import { userDispatch } from '../app_reducer';
 
-function User({ user, onRemove }) {
-    useEffect(() => {
-        console.log('user 값이 설정됨');
-      });
-    return (
-      <div>
-        <b>{user.username}</b> <span>({user.email})</span>
-        <button onClick={onRemove.bind(this,user.id)}>삭제</button>
-      </div>
-    );
-  }
+const User=memo(({ user })=> {
+const dispatch=useContext(userDispatch);
+
+  useEffect(()=>{
+    console.log(`${user.username} rendering..`)
+  })
+  useEffect(() => {
+      console.log('user 값이 설정됨');
+    },[user]);
+  return (
+    <div>
+      <b>{user.username}</b> <span>({user.email})</span>
+      <button onClick={()=> dispatch({ type:"REMOVE_USER", id:user.id})
+        }>삭제</button>
+    </div>
+  );
+});
   
 
-const UserList = ({ users, onRemove }) => {
-    return (
-        <div>
-          {users.map(user => (
-            <User user={user} key={user.id} onRemove={onRemove} />
-          ))}
-        </div>
-      );
-}
+const UserList = memo(({ users }) => {
+  return (
+      <div>
+        {users.map(user => (
+          <User user={user} key={user.id} />
+        ))}
+      </div>
+    );
+});
 
 export default UserList;

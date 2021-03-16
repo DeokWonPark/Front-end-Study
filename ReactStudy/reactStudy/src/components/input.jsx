@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
-const Input = (props) => {
+const Input = memo((props) => {
     const [inputValue,setValue]=useState({
         name:"",
         nickname:"",
@@ -31,6 +31,6 @@ const Input = (props) => {
             <p>name:{name} nickname:{nickname}</p>
         </div>
     </div>
-}
+})
 
 export default Input;
