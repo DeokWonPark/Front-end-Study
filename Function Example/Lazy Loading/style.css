@@ -1,0 +1,10 @@
+img {
+  display: block;
+  margin: 10px auto;
+}
+.lazy {
+  background: #f1f1fa;
+  width: 400px;
+  height: 300px;
+  border: 0;
+}
