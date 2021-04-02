@@ -11,6 +11,9 @@ module.exports={
         path:path.resolve('./dist'),
         filename:'[name].js',
     },
+    devServer:{
+        port:8000,
+    },
     module:{
         rules:[
             {
