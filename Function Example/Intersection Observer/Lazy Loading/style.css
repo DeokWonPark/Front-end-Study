@@ -1,0 +1,10 @@
+.comic {
+  list-style: none;
+  margin: 200px 50px;
+}
+.comic a {
+  display: inline-block;
+  width: 600px;
+  height: 300px;
+  border: 3px solid black;
+}
