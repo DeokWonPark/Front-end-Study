@@ -29,7 +29,7 @@
     const objC=objB;
 
     console.log(a==b); // 기본타입의 경우 값을 비교한다.
-    console.log(objA==objB); // 참초타입의 경우 참조를 비교한다. -> false
+    console.log(objA==objB); // 참조타입의 경우 참조를 비교한다. -> false
     console.log(objB==objC); // -> true
 
 
