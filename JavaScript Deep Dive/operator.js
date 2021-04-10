@@ -24,10 +24,10 @@
 // 좌항의 피연산자가 null, undifined인 경우 우항을 반환 그렇지 않으면 좌항을 반환 - 변수에 기본값을 설정할 때 유용하다.
 {
     var foo = null ?? "hello";
-    console.log(foo); 
+    console.log(foo); //hello
 } 
 // ?? 도입 이전의 방식
 {
     var foo = null || "hello";
-    console.log(foo); 
+    console.log(foo); //hello
 } 
