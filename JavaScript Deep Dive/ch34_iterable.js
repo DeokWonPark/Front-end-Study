@@ -297,3 +297,141 @@
 // for ... of경우 이터러블을 순회 할 때 내부에서  next()를 호출 하는데 그때 데이터가 생성된다 ***
 // 즉 데이터가 필요 할때 데이터를 생성한다.
 //지연평가를 사용하면 불필요한 데이터를 미리 생성하지 않고 필요한 데이터를 필요한 순간에 생성하므로 빠른 실행 속도를 기대, 불필요한 메모리를 소비하지않으며, 무한도 표현이 가능하다. ***
+
+
+
+
+
+/**
+ * Ch35 스프레드 문법 ...
+ * 하나로 뭉쳐있는 여러 값들의 집합을 펼처서 개별적인 값들의 목록을 만든다.
+ * 사용가능한 대상은 이터러블에 한정
+ */
+
+{
+    //뭉쳐있는 값들을 펼쳐서 목록을 만든다
+    console.log(...[1,2,3]) //개별요소로 분리  1 2 3 => 값이 아니라 목록이다.
+    console.log(..."Hello"); //H E L L O
+
+    //Map, Set도 이터러블
+    console.log(... new Map([['a', '1'], ['b','1']])); //  ["a", "1"] ["b", "1"]
+    console.log(... new Set([1,2,3])) //1 2 3
+}
+//스프레드 문법의 결과는 값이 아니라 목록이다.
+// 따라서 스프레드 문법의 결과는 변수에 할당할 수 없다.
+{
+    //const list = ...[1,2,3]; error
+}
+
+// 따라서  목록을 사용하는 문맥에서만 사용이 가능하다.
+//1. 함수 호출문의 인수목록
+{
+    const arr = [1,2,3];
+
+    let max = Math.max(arr);
+    console.log(max) //NaN -> 배열을 전달하면 max를 구할 수 없다.
+
+    max = Math.max(1,2,3,4,5)  //가변인자를 전달 받는 가변인자 함수다
+    console.log(max); //5
+
+    max = Math.max(...arr);
+    console.log(max); //3
+}
+
+//2. 배열 리터럴의 요소목록
+// concat
+{
+    const arr=[1,2].concat([3,4]);
+    console.log(arr); //[1, 2, 3, 4]
+
+    //spread
+    const spreadArr = [...[1,2], ...[3,4]];
+    console.log(spreadArr); //[1, 2, 3, 4]
+}
+//splice
+{
+    //[1,2,3,4] 생성
+    const arr1=[1,4];
+    const arr2=[2,3];
+
+    Array.prototype.splice.apply(arr1, [1,0].concat(arr2));
+    console.log(arr1); //[1, 2, 3, 4]
+
+    //spread
+    const spreadArr1=[1,4];
+    const spreadArr2=[2,3];
+
+    spreadArr1.splice(1,0,...spreadArr2);
+    console.log(spreadArr1); //[1, 2, 3, 4]
+}
+// 배열 복사 slice
+{
+    const ori = [1,2];
+    const copy = [...ori];
+
+    console.log(ori === copy) //false
+    console.log(copy) //[1, 2]
+    //원본 배열의 각 요소를 얕은복사로 생성한다.
+}
+//이터러블, 유사배열객체 배열로 변환
+//ES5에서 이터러블, 유사배열객체를 배열로 변환하려면 Function.prototype.apply/call을 사용해서 slice를 호출해야한다.
+{
+    //ES5
+    const arrayLike = {
+        0:1,
+        1:2,
+        2:3,
+        length:3
+    }
+
+    const arr = Array.prototype.slice.call(arrayLike);
+    console.log(Array.isArray(arr)); //true
+
+    //ES6
+    //const spreadArr = [...arrayLike]; //error -> 이터러블이 아니다.
+    const spreadArr = Array.from(arrayLike);
+    console.log(Array.isArray(spreadArr)); //true
+}
+
+//3. 객체 리터럴의 프로퍼티 목록
+// 스프레드 프로퍼티 {...} -> 이터러블이 아닌 일반 객체도 사용 가능하다.
+{
+    // 객체 복사
+    const obj = {x:1, y:2};
+    const copy = {...obj};
+
+    console.log(obj === copy) //false
+    console.log(copy) //{x: 1, y: 2}
+
+    //객체 병합
+    const merged = {x:1, y:2, ...{a:3, b:4} };
+    console.log(merged) //{x: 1, y: 2, a: 3, b: 4}
+}
+
+// 스프레드 프로퍼티가 제안되기 이전에는 Object.assign메서드를 사용해서 여러개의 객체를 병합하거나 특정 프로퍼티를 변경했다.
+{
+    const merged = Object.assign({}, {x:1,y:2},{y:10,z:20});
+    console.log(merged) //{x: 1, y: 10, z: 20}
+
+    //특정 프로퍼티 변경
+    const changed = Object.assign({}, {x:1,y:2},{y:100});
+    console.log(changed); //{x: 1, y: 100}
+
+    //특정 프로퍼티 추가
+    const added = Object.assign({}, {x:1,y:2},{z:100});
+    console.log(added); //{x: 1, y: 2, z: 100}
+}
+
+// 스프레드 프로퍼티
+{
+    const merged = {...{x:1,y:2},...{y:10,z:20}}
+    console.log(merged) //{x: 1, y: 10, z: 20}
+
+    //특정 프로퍼티 변경
+    const changed = {...{x:1,y:2},y:100};
+    console.log(changed); //{x: 1, y: 100}
+
+    //특정 프로퍼티 추가
+    const added = {...{x:1,y:2},z:100};
+    console.log(added); //{x: 1, y: 2, z: 100}
+}
