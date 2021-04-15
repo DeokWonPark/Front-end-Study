@@ -435,3 +435,140 @@
     const added = {...{x:1,y:2},z:100};
     console.log(added); //{x: 1, y: 2, z: 100}
 }
+
+
+
+
+
+
+/**
+ * ch 36 디스트럭처링 할당
+ * 구조화된 배열같은 이터러블이나 객체를 비구조화하여 1개이상의 변수에 할당하는 것
+ * 배열 또는 객체리터럴에서 필요한 값만 추출하여 변수에 할당할 때 유용하다
+ */
+
+
+// 배열 디스트럭처링 할당
+//ES5
+{
+    var arr =[1,2,3];
+
+    var one = arr[0];
+    var two = arr[1];
+    var three = arr[2];
+
+    console.log(one,two,three);
+}
+
+//ES6 - 배열 디스트럭처링 할당의 대상은 이터러블이여야 하며, 할당 기준은 배열의 인덱스이다.
+{
+    const arr = [1,2,3];
+
+    const [one,two,three] = arr;
+    console.log(one,two,three); //1 2 3
+
+    // 할당기준은 인덱스이다.
+    const [a,b]=[1,2];
+    console.log(a,b) //1 2
+
+    const [c,d]=[1];
+    console.log(c,d) //1 undefined
+
+    const [e,f]=[1,2,3];
+    console.log(e,f) //1 2
+
+    const [g,,h]=[1,2,3];
+    console.log(g,h) //1 3
+}
+
+// 배열 디스트럭처링 할당은 배열과 같은 이터러블에서 필요한 값만 추출 하여 변수에 할당 하고 싶을 때 유용하다.
+// example - URL을 파싱하여 protocal, host, path프로퍼티를 갖는 객체 생성
+{
+    function parseURL(url = ''){
+        const parsedURL = url.match(/^(\w+):\/\/([^/]+)\/(.*)$/);
+        console.log(parsedURL);
+        /*
+            ["https://developer.mozilla.org/ko/docs/Web/JavaScript", 
+            "https", 
+            "developer.mozilla.org", 
+            ko/docs/Web/JavaScript", 
+            index: 0, 
+            input: "https://developer.mozilla.org/ko/docs/Web/JavaScript", groups: undefined]
+        */
+
+        if(!parsedURL) return{};
+
+        // 배열 디스트럭처링 할당을 사용하여 이터러블에서 필요한 요소만 추출
+        const [,protocal, host, path] = parsedURL;
+        return {protocal, host, path};
+    }
+
+    const parsedURL = parseURL('https://developer.mozilla.org/ko/docs/Web/JavaScript');
+    console.log(parsedURL); // {protocal: "https", host: "developer.mozilla.org", path: "ko/docs/Web/JavaScript"}
+}
+
+
+// 객체 디스트럭처링 할당
+// ES5
+{
+    var user = {firstName: 'Ungmo', lastName: 'Lee'};
+
+    var firstName = user.firstName;
+    var lastName = user.lastName;
+
+    console.log(firstName,lastName); //Ungmo Lee
+}
+//ES6 객체 디스트럭처링 할당
+//객체의 각 프로퍼티를 객체로 추출하여 1개 이상의 변수에 할당한다.
+// 객체 디스트럭처링 할당의 대상은 객체여야하며, 할당 기준은 프로퍼티 키다. => 즉 순서는 의미가 없으며 선언된 변수이름과 프로퍼티 키가 일치하면된다.
+{
+    const user = { firstName:'Ungmo', lastName:'Lee'};
+    const {firstName, lastName} = user;
+    console.log(firstName,lastName); //Ungmo Lee
+}
+
+//객체 디스트럭처링 할당은 객체에서 프로퍼티 키로 필요한 프로퍼티 값만 추출하여 할당할 때 유용하다.
+{
+    const str = 'Hello';
+    const {length} = str;
+    console.log(length); //5
+
+    const todo = {id:1, content:'HTML', complete:true};
+    const {id} = todo;
+    console.log(id); //1
+}
+
+// 매개변수에서도 디스트럭처링 할당가능
+{
+    function printTodo({content, complete}){
+        console.log(`할일 ${content}은 ${complete?'완료':'비완료'}상태 입니다.`);
+    }
+    const todo = {id:1, content:'HTML', complete:true};
+    printTodo(todo);
+}
+
+// 배열 디스트럭처링과 객체 디스트럭처링 혼용
+{
+    const todos = [
+        {id:1, content:'HTML', complete:true},
+        {id:2, content:'CSS', complete:true},
+        {id:3, content:'JavaScript', complete:false}
+    ]
+
+    const [,{id}] = todos;
+    console.log(id); //2
+}
+
+//중첩 객체
+{
+    const user = {
+        name:'Lee',
+        address:{
+            zipCode:'02156',
+            city:'Seoul'
+        }
+    }
+
+    const {address:{city}} = user;
+    console.log(city); //Seoul
+}
