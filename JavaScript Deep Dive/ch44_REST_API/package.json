@@ -1,0 +1,11 @@
+{
+  "name": "ch44_REST_API",
+  "version": "1.0.0",
+  "main": "ch44_REST_API.js",
+  "scripts": {
+    "start": "json-server --watch db.json"
+  },
+  "devDependencies": {
+    "json-server": "^0.16.3"
+  }
+}
