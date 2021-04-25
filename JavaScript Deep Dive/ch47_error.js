@@ -43,7 +43,6 @@
 
 {
     try{
-        // 에러 객체를 생성한다고 해서 에러가 발생하는 것은 아니다
         throw new Error('throw error');
     }catch(err){
         console.error(err); //Error: throw error

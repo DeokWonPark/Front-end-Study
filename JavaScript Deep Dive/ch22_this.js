@@ -212,3 +212,5 @@
     console.log(getThisBinding.bind(arg));
     console.log(getThisBinding.bind(arg)());
 }
+
+//bind는 메서드와 메서드 내부의 this가 일치하지 않는 문제를 해결하는데 사용된다.

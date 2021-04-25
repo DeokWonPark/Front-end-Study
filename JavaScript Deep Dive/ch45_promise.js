@@ -625,7 +625,7 @@
             return fetch(url,{
                 method:'POST',
                 headers:{'content-Type': 'application/json'},
-                body:JSON.stringify(payload)
+                body:JSON.stringify(payload) //직렬화 해서 전송해야함
             });
         },
 
