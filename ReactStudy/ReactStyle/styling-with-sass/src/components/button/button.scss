@@ -1,0 +1,76 @@
+$blue: #228be6; //comment
+$pink: #495057;
+$grey: #f06595;
+
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color: $color, $amount: 10%);
+  }
+  &:active {
+    background: darken($color: $color, $amount: 10%);
+  }
+
+  &.outline {
+    color: $color;
+    background: none;
+    border: 1px solid $color;
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+}
+
+.Btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+  outline: none;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  padding-left: 1rem;
+  padding-right: 1rem;
+
+  &.meduim {
+    height: 2.25rem;
+    font-size: 1rem;
+  }
+
+  &.large {
+    height: 3rem;
+    font-size: 1.25rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    font-size: 0.875rem;
+  }
+
+  &.blue {
+    @include button-color($blue);
+  }
+  &.pink {
+    @include button-color($pink);
+  }
+  &.grey {
+    @include button-color($grey);
+  }
+
+  // 버튼 옆에 버튼이 있으면 오른쪽 &에 스타일을 주겟다
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &.fullWidth {
+    width: 100%;
+    justify-content: center;
+    & + & {
+      margin-left: 0;
+      margin-top: 1rem;
+    }
+  }
+}
