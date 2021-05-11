@@ -27,7 +27,7 @@
 
 // 래퍼 객체의 처리가 종료되면 다시 원시값으로 되돌리고, 래퍼객체는 가비지 컬렉션의 대상이된다.
 
-//문자열, 숫자, 불리언, 심벌 이외의 numm,undefined는 래퍼객체를 생성하지 않는다.
+//문자열, 숫자, 불리언, 심벌 이외의 null,undefined는 래퍼객체를 생성하지 않는다.
 
 
 
@@ -40,7 +40,7 @@
     var baz=function(){
         return 3;
     }
-    console.log(window.baz());
+    console.log(window.baz()); //3
 }
 // ** let이나,const 키워드로 선언한 전역변수는 전역객체의 프로퍼티가 아니다. - 보이지 않는 개념적인 블록내에 존재하게 된다.
 {
@@ -80,9 +80,9 @@
     const uri='https://example.com?name=박덕원&job=programmer&teacher';
     const enc=encodeURI(uri);
     const dec=decodeURI(enc);
-    console.log(`ori: ${uri}`);
-    console.log(`encoded: ${enc}`);
-    console.log(`decoded: ${dec}`)
+    console.log(`ori: ${uri}`); //ori: https://example.com?name=박덕원&job=programmer&teacher
+    console.log(`encoded: ${enc}`); // encoded: https://example.com?name=%EB%B0%95%EB%8D%95%EC%9B%90&job=programmer&teacher
+    console.log(`decoded: ${dec}`) // decoded: https://example.com?name=박덕원&job=programmer&teacher
 }
 //encodeURIComponent, decodeURIComponent -  URI 구성요소를 문자열로 전달받아 이스케이프처리를 위해 인코딩한다.
 // 쿼리스트링의 일부로 간주하여 &,=,?까지 인코딩한다.

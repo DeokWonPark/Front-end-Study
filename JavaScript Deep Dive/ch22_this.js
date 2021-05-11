@@ -21,7 +21,7 @@
 //생성자 함수의 객체 생성
 // 생성자 내부에서 자신이 생성할 인스턴스를 참조 할 수 있어야한다.
 // 하지만 인스턴스 생선전에 생성자 함수가 먼저 정의가 완료 되어 있어야 한다.
-// 따라서 생성자 함수에서 생성할 인스턴스의 식별자를 알 수가 없다. - 이를 위해 this라는 특수한 실별자를 제공한다.
+// 따라서 생성자 함수에서 생성할 인스턴스의 식별자를 알 수가 없다. - 이를 위해 this라는 특수한 식별자를 제공한다.
 
 // ** this는 자신이 속한 객체 또는 자신이 생성할 인스턴스를 가리키는 자기참조변수이다. 
 // 함수를 호출하면 arguments객체와 this가 암묵적으로 전달된다.
@@ -60,7 +60,7 @@
     }
 
     const circle=new Circle(15);
-    console.log(circle.getArea());
+    console.log(circle.getArea()); //30
 }
 
 // 클래스 기반의 언어 java, c++같은 언어에서는 this가 언제나 클래스가 생성하는 인스턴스에 바인딩된다.
@@ -108,7 +108,7 @@
 {
 
     function foo(){
-        console.dir(this);
+        console.dir(this); 
     }
 
     //4. Function.prototype.apply/call/bind에 의한 간접 호출

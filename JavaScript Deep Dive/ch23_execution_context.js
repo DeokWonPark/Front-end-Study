@@ -41,7 +41,7 @@
 
         function bar(b){
             const z = 5;
-            console.log(a+b+x+y+z);
+            console.log(a+b+x+y+z); //42
         }
         bar(10);
     }

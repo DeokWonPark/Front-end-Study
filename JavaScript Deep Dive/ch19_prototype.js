@@ -102,7 +102,7 @@
 
 // 사용자 정의 생성자 함수와 프로토타입 생성시점
 {
-    console.log(Person.prototype); //함수객체자 정의되어 생성되는 시점에 프로토타입 객체도 함께 생성된다.
+    console.log(Person.prototype); //함수객체가 정의되어 생성되는 시점에 프로토타입 객체도 함께 생성된다.
     function Person(){
         this.name='foo';
     }

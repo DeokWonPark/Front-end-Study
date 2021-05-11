@@ -13,10 +13,13 @@
     }
 
     const C1=new Circle(5);
-    console.log(C1.getDiameter());
+    console.log(C1.getDiameter()); //10
+
+    const a= C1.getDiameter;
+    console.log(a()); //NaN
 
     const C2=new Circle(10);
-    console.log(C2.getDiameter());
+    console.log(C2.getDiameter()); //20
 }
 
 // this바인딩 **
